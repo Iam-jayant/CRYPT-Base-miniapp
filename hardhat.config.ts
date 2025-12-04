@@ -1,9 +1,8 @@
+import type { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox-viem";
-import "@nomicfoundation/hardhat-ignition";
 import "dotenv/config";
 
-/** @type import('hardhat/config').HardhatUserConfig */
-export default {
+const config: HardhatUserConfig = {
   solidity: {
     version: "0.8.28",
     settings: {
@@ -15,14 +14,14 @@ export default {
   },
   networks: {
     hardhat: {
-      type: "edr-simulated",
+      type: "edr-simulated" as const,
       chainId: 1337,
     },
-    mumbai: {
-      type: "http",
-      url: process.env.MUMBAI_RPC_URL || "https://rpc-mumbai.maticvigil.com",
+    amoy: {
+      type: "http" as const,
+      url: process.env.AMOY_RPC_URL || "https://rpc-amoy.polygon.technology/",
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
-      chainId: 80001,
+      chainId: 80002,
     },
   },
   paths: {
@@ -33,7 +32,9 @@ export default {
   },
   etherscan: {
     apiKey: {
-      polygonMumbai: process.env.POLYGONSCAN_API_KEY || "",
+      polygonAmoy: process.env.POLYGONSCAN_API_KEY || "",
     },
   },
 };
+
+export default config;

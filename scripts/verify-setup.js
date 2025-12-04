@@ -121,7 +121,7 @@ envChecks.forEach((check) => {
 });
 
 console.log('\n🔑 Required API Keys:\n');
-console.log('  - MUMBAI_RPC_URL (default provided)');
+console.log('  - AMOY_RPC_URL (default provided)');
 console.log('  - PRIVATE_KEY (for deployment)');
 console.log('  - WEB3_STORAGE_API_KEY (get from web3.storage)');
 console.log('  - HUGGINGFACE_API_KEY (get from huggingface.co)');
@@ -134,8 +134,8 @@ console.log('  ✅ Viem installed');
 console.log('  ✅ RainbowKit installed');
 
 console.log('\n🌐 Network Configuration:\n');
-console.log('  📍 Target Network: Polygon Mumbai Testnet');
-console.log('  🔗 Chain ID: 80001');
+console.log('  📍 Target Network: Polygon Amoy Testnet');
+console.log('  🔗 Chain ID: 80002');
 console.log('  💧 Faucet: https://faucet.polygon.technology/');
 
 if (allPassed) {

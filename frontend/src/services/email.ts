@@ -22,16 +22,19 @@ export async function sendGiftCardEmail(data: GiftCardEmailData): Promise<void> 
   }
 
   try {
+    // Template parameters matching your EmailJS template
     const templateParams = {
-      to_email: data.recipientEmail,
+      email: data.recipientEmail, // Matches {{email}} in template
+      name: data.recipientEmail.split('@')[0], // Matches {{name}} in template
       sender_address: data.senderAddress,
-      token_id: data.tokenId,
       token_symbol: data.tokenSymbol,
       amount: data.amount,
       claim_url: data.claimUrl,
       tx_hash: data.txHash,
       explorer_url: data.explorerUrl,
     };
+
+    console.log('Sending email with params:', templateParams);
 
     const response = await emailjs.send(
       EMAILJS_SERVICE_ID,

@@ -1,11 +1,11 @@
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
-import { polygonMumbai } from 'wagmi/chains';
+import { polygonAmoy } from 'wagmi/chains';
 
-// Mumbai testnet configuration
+// Amoy testnet configuration
 export const config = getDefaultConfig({
   appName: 'NFT Gift Protocol',
   projectId: import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || 'YOUR_PROJECT_ID',
-  chains: [polygonMumbai],
+  chains: [polygonAmoy],
   ssr: false,
 });
 
@@ -26,11 +26,11 @@ export const API_CONFIG = {
   },
 };
 
-// Mumbai testnet details
-export const MUMBAI_TESTNET = {
-  chainId: 80001,
-  name: 'Polygon Mumbai',
-  rpcUrl: import.meta.env.VITE_MUMBAI_RPC_URL || 'https://rpc-mumbai.maticvigil.com',
-  blockExplorer: 'https://mumbai.polygonscan.com',
+// Amoy testnet details
+export const AMOY_TESTNET = {
+  chainId: 80002,
+  name: 'Polygon Amoy',
+  rpcUrl: import.meta.env.VITE_AMOY_RPC_URL || 'https://rpc-amoy.polygon.technology/',
+  blockExplorer: 'https://amoy.polygonscan.com',
   faucet: 'https://faucet.polygon.technology/',
 };

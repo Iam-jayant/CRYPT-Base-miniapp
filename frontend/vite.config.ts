@@ -10,4 +10,13 @@ export default defineConfig({
       },
     }),
   ],
+  optimizeDeps: {
+    exclude: ['wagmi/actions'],
+    include: ['wagmi', '@rainbow-me/rainbowkit', 'viem'],
+  },
+  server: {
+    fs: {
+      strict: false,
+    },
+  },
 })

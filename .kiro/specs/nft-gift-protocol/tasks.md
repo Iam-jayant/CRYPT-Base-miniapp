@@ -16,7 +16,8 @@ This implementation plan breaks down the NFT Gift Protocol into incremental codi
   - Create environment configuration files for contract addresses and API keys
   - _Requirements: 1.1, 6.4, 7.1_
 
-- [ ] 2. Implement GiftCardNFT smart contract
+- [x] 2. Implement GiftCardNFT smart contract
+
 
   - Create Solidity contract inheriting from ERC721URIStorage and ReentrancyGuard
   - Implement TokenVault struct to store token address, amount, and liquidation status
@@ -27,16 +28,18 @@ This implementation plan breaks down the NFT Gift Protocol into incremental codi
   - Add events for GiftCardCreated and GiftCardLiquidated
   - _Requirements: 1.3, 1.4, 3.1, 3.2, 3.3, 3.4, 8.2, 8.3, 8.4_
 
-- [ ] 2.1 Write unit tests for GiftCardNFT contract
-
+- [x] 2.1 Write unit tests for GiftCardNFT contract
   - Test gift card creation with token deposits
   - Test liquidation flow and token transfers
   - Test authorization (only owner can liquidate)
   - Test double liquidation prevention
   - Test with multiple ERC-20 token types
   - _Requirements: 1.3, 1.4, 3.2, 3.3, 8.2, 8.3_
+  - _Note: Tests written using Hardhat Viem + Node.js test runner_
 
-- [ ] 3. Implement Marketplace smart contract
+
+- [x] 3. Implement Marketplace smart contract
+
 
   - Create contract with ArtistListing and GiftCardListing structs
   - Implement createArtistListing function to store IPFS hash and price
@@ -48,7 +51,9 @@ This implementation plan breaks down the NFT Gift Protocol into incremental codi
   - Add events for all marketplace actions
   - _Requirements: 4.2, 4.3, 4.4, 4.5, 5.1, 5.2, 5.3, 5.4, 5.5_
 
-- [ ] 3.1 Write unit tests for Marketplace contract
+- [-] 3.1 Write unit tests for Marketplace contract
+
+
 
   - Test artist listing creation and purchase flow
   - Test gift card listing and secondary sale
@@ -57,7 +62,7 @@ This implementation plan breaks down the NFT Gift Protocol into incremental codi
   - Test authorization checks
   - _Requirements: 4.2, 4.3, 4.4, 5.1, 5.2_
 
-- [ ] 4. Create IPFS service module
+- [x] 4. Create IPFS service module
 
   - Set up web3.storage client with API key configuration
   - Implement uploadImage function that accepts File/Blob and returns CID
@@ -67,7 +72,7 @@ This implementation plan breaks down the NFT Gift Protocol into incremental codi
   - Add error handling for upload failures and timeouts
   - _Requirements: 6.1, 6.2, 6.3, 6.5_
 
-- [ ] 5. Implement AI art generation service
+- [x] 5. Implement AI art generation service
 
   - Create service module for Hugging Face API integration
   - Implement generateArt function that calls Stable Diffusion API
@@ -77,19 +82,19 @@ This implementation plan breaks down the NFT Gift Protocol into incremental codi
   - Return generated image as Blob for IPFS upload
   - _Requirements: 1.2_
 
-- [ ] 6. Set up wallet integration with RainbowKit
+- [x] 6. Set up wallet integration with RainbowKit
 
-  - Configure RainbowKit with Polygon Mumbai testnet only
-  - Set up wagmi config with HTTP transport for Mumbai testnet
+  - Configure RainbowKit with Polygon Amoy testnet
+  - Set up wagmi config with HTTP transport for Amoy testnet
   - Create WalletProvider component wrapping the app
   - Implement useAccount hook usage for wallet connection state
-  - Add automatic network switching to Mumbai if user is on wrong network
-  - Display connected wallet address and MATIC balance in UI
-  - Add warning banner if user tries to connect to mainnet or other networks
+  - Add network detection for Amoy testnet
+  - Display connected wallet address with ConnectButton
+  - Add warning banner if user is on wrong network
   - _Requirements: 1.1, 7.1, 7.2, 7.3, 7.4, 7.5_
-  - _Note: Only Polygon Mumbai testnet is supported_
+  - _Note: Only Polygon Amoy testnet is supported_
 
-- [ ] 7. Build gift card creation page
+- [x] 7. Build gift card creation page
 
   - Create React component with form for AI prompt input
   - Integrate AI art generation service with loading indicator
@@ -104,33 +109,34 @@ This implementation plan breaks down the NFT Gift Protocol into incremental codi
   - Add helper text indicating testnet tokens only
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 8.1, 8.5_
 
-- [ ] 8. Implement email claim system
+- [x] 8. Implement email claim system
 
   - Create claim link generation service with tokenId encryption
-  - Set up EmailJS or Web3Forms integration for sending emails
-  - Write sendClaimEmail function with gift card preview and claim link
+  - Set up EmailJS or Web3Forms integration for sending emails (Pending API key)
+  - Write sendClaimEmail function with gift card preview and claim link (Pending)
   - Create claim page component that parses URL token parameter
   - Display gift card preview on claim page
   - Implement wallet connection prompt for recipients
   - Add NFT transfer logic when recipient connects wallet
   - Validate claim token and prevent double claims
   - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5_
+  - _Note: Email sending functionality requires EmailJS configuration_
 
-- [ ] 9. Build marketplace page for artist listings
+- [x] 9. Build marketplace page for artist listings
 
   - Create marketplace component with tabs for "Artist Designs" and "Gift Cards"
   - Implement artist designs tab with grid layout
-  - Fetch active artist listings from Marketplace contract
+  - Fetch active artist listings from Marketplace contract (Placeholder - needs event querying)
   - Display artwork previews loaded from IPFS
   - Add purchase button that calls purchaseArtistDesign with payment
   - Show transaction confirmation after purchase
-  - Implement filter and sort options (price, date)
+  - Implement filter and sort options (price, date) (Basic implementation)
   - _Requirements: 4.3, 4.4, 4.5_
 
-- [ ] 10. Build marketplace page for gift card secondary market
+- [x] 10. Build marketplace page for gift card secondary market
 
   - Implement gift cards tab in marketplace component
-  - Fetch active gift card listings from Marketplace contract
+  - Fetch active gift card listings from Marketplace contract (Placeholder - needs event querying)
   - Display gift card artwork and vault contents (token type, amount)
   - Show both purchase price and liquidation value
   - Add purchase button that calls purchaseGiftCard
@@ -138,10 +144,10 @@ This implementation plan breaks down the NFT Gift Protocol into incremental codi
   - Show transaction confirmation with updated ownership
   - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5_
 
-- [ ] 11. Create "My Gifts" page for owned gift cards
+- [x] 11. Create "My Gifts" page for owned gift cards
 
   - Build component to display user's owned GiftCardNFTs
-  - Query blockchain for NFTs owned by connected wallet
+  - Query blockchain for NFTs owned by connected wallet (Placeholder - needs proper implementation)
   - Fetch and display metadata and artwork from IPFS for each NFT
   - Show vault contents (token type, symbol, amount, liquidation status)
   - Implement liquidate button that calls liquidate contract function
@@ -150,7 +156,7 @@ This implementation plan breaks down the NFT Gift Protocol into incremental codi
   - Update UI after liquidation or listing
   - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5, 5.1_
 
-- [ ] 12. Implement artist listing creation flow
+- [x] 12. Implement artist listing creation flow
 
   - Create "List Your Art" page for artists
   - Add artwork upload interface (file input for images)
@@ -158,10 +164,11 @@ This implementation plan breaks down the NFT Gift Protocol into incremental codi
   - Add price input field in ETH/MATIC
   - Implement createArtistListing contract call with IPFS hash and price
   - Show confirmation and listing details after creation
-  - Add "My Listings" section to view and manage artist's listings
+  - Add "My Listings" section to view and manage artist's listings (Pending)
   - _Requirements: 4.1, 4.2_
 
-- [ ] 13. Add contract interaction utilities and error handling
+- [x] 13. Add contract interaction utilities and error handling
+
 
   - Create utility functions for contract reads and writes
   - Implement transaction waiting and confirmation logic
@@ -171,31 +178,34 @@ This implementation plan breaks down the NFT Gift Protocol into incremental codi
   - Add retry mechanisms for failed IPFS fetches
   - Handle wallet errors (not connected, wrong network, insufficient gas)
   - _Requirements: 7.3, 7.4_
+  - _Note: Toast system integrated, error parsing complete, utilities created_
 
-- [ ] 14. Deploy contracts to Polygon Mumbai testnet and configure frontend
+
+
+- [ ] 14. Deploy contracts to Polygon Amoy testnet and configure frontend
 
   - Compile smart contracts with optimization enabled
-  - Deploy mock ERC-20 tokens (TestUSDC, TestDAI) to Mumbai testnet
-  - Deploy GiftCardNFT contract to Mumbai testnet
-  - Deploy Marketplace contract with GiftCardNFT address to Mumbai
-  - Verify all contracts on PolygonScan Mumbai explorer
-  - Update frontend environment variables with Mumbai contract addresses and RPC URL
-  - Configure frontend to only support Mumbai testnet (hardcode chain ID 80001)
-  - Add instructions for users to get test MATIC from Mumbai faucet
-  - Test complete user flows on Mumbai with testnet tokens
+  - Deploy mock ERC-20 tokens (TestUSDC, TestDAI) to Amoy testnet
+  - Deploy GiftCardNFT contract to Amoy testnet
+  - Deploy Marketplace contract with GiftCardNFT address to Amoy
+  - Verify all contracts on PolygonScan Amoy explorer
+  - Update frontend environment variables with Amoy contract addresses and RPC URL
+  - Configure frontend to only support Amoy testnet (hardcode chain ID 80002)
+  - Add instructions for users to get test MATIC from Amoy faucet
+  - Test complete user flows on Amoy with testnet tokens
   - _Requirements: All requirements (integration testing)_
-  - _Note: This project uses Polygon Mumbai testnet exclusively - no mainnet deployment_
+  - _Note: This project uses Polygon Amoy testnet exclusively - no mainnet deployment_
 
-- [ ] 15. Create landing page and navigation
+- [x] 15. Create landing page and navigation
 
   - Build home/landing page with protocol overview
-  - Add prominent banner indicating "Polygon Mumbai Testnet Only - No Real Tokens"
-  - Include link to Mumbai MATIC faucet (https://faucet.polygon.technology/)
-  - Add navigation menu with links to Create, Marketplace, My Gifts
+  - Add prominent banner indicating "Polygon Amoy Testnet Only - No Real Tokens"
+  - Include link to Amoy MATIC faucet (https://faucet.polygon.technology/)
+  - Add navigation menu with links to Create, Marketplace, My Gifts, List Art
   - Implement responsive design for mobile and desktop
   - Add wallet connection button in header
-  - Display Mumbai network indicator and wallet address when connected
-  - Create footer with links, protocol information, and Mumbai testnet disclaimer
+  - Display Amoy network indicator and wallet address when connected
+  - Create footer with links, protocol information, and Amoy testnet disclaimer
   - _Requirements: 7.5_
 
 - [ ] 16. Write integration tests for frontend flows

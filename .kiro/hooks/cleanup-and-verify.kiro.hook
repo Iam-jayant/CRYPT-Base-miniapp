@@ -4,7 +4,7 @@
   "description": "Monitors project files for changes and automatically removes unnecessary files while reverifying that the project is on the right track after each task completion",
   "version": "1",
   "when": {
-    "type": "fileEdited",
+    "type": "userTriggered",
     "patterns": [
       "**/*"
     ]

@@ -163,3 +163,10 @@ frontend/.env.local
 *.swo
 *~
 .DS_Store
+
+# API keys and secrets (never commit these!)
+*api*key*
+*secret*
+*jwt*
+*.pem
+*.key

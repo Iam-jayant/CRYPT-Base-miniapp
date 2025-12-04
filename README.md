@@ -4,7 +4,7 @@ A decentralized gifting system that replaces traditional gift cards with customi
 
 ## ⚠️ Important: Testnet Only
 
-**This project runs exclusively on Polygon Mumbai testnet. No real tokens or value are involved.**
+**This project runs exclusively on Polygon Amoy testnet. No real tokens or value are involved.**
 
 ## Features
 
@@ -31,7 +31,7 @@ A decentralized gifting system that replaces traditional gift cards with customi
 - TanStack Query for state management
 
 ### Infrastructure
-- Polygon Mumbai testnet (Chain ID: 80001)
+- Polygon Amoy testnet (Chain ID: 80002)
 - IPFS via web3.storage
 - Hugging Face API for AI art generation
 - EmailJS for email delivery
@@ -58,7 +58,7 @@ A decentralized gifting system that replaces traditional gift cards with customi
 
 - Node.js v18+ and npm
 - MetaMask or another Web3 wallet
-- Mumbai testnet MATIC (get from [faucet](https://faucet.polygon.technology/))
+- Amoy testnet MATIC (get from [faucet](https://faucet.polygon.technology/))
 
 ### Installation
 
@@ -92,7 +92,7 @@ cp frontend/.env.example frontend/.env
 ### Configuration
 
 #### Root `.env` file:
-- `MUMBAI_RPC_URL`: Mumbai testnet RPC endpoint
+- `AMOY_RPC_URL`: Amoy testnet RPC endpoint
 - `PRIVATE_KEY`: Your wallet private key (for deployment)
 - `POLYGONSCAN_API_KEY`: For contract verification
 - `WEB3_STORAGE_API_KEY`: Get from [web3.storage](https://web3.storage)
@@ -124,9 +124,9 @@ The frontend will be available at `http://localhost:5173`
 
 ### Deployment
 
-Deploy contracts to Mumbai testnet:
+Deploy contracts to Amoy testnet:
 ```bash
-npm run deploy
+npm run deploy:amoy
 ```
 
 After deployment, update the contract addresses in `frontend/.env`:
@@ -135,16 +135,16 @@ After deployment, update the contract addresses in `frontend/.env`:
 
 ## Network Information
 
-### Polygon Mumbai Testnet
-- **Chain ID**: 80001
-- **RPC URL**: https://rpc-mumbai.maticvigil.com
-- **Block Explorer**: https://mumbai.polygonscan.com
+### Polygon Amoy Testnet
+- **Chain ID**: 80002
+- **RPC URL**: https://rpc-amoy.polygon.technology/
+- **Block Explorer**: https://amoy.polygonscan.com
 - **Faucet**: https://faucet.polygon.technology/
 
 ## Usage
 
 1. **Connect Wallet**: Use the connect button to link your MetaMask wallet
-2. **Get Test MATIC**: Visit the Mumbai faucet to get test tokens
+2. **Get Test MATIC**: Visit the Amoy faucet to get test tokens
 3. **Create Gift Card**: Generate AI art and mint an NFT with embedded tokens
 4. **Send Gift**: Share via email or transfer directly
 5. **Trade**: List on marketplace or purchase existing gift cards
