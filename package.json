@@ -4,13 +4,12 @@
   "description": "NFT Gift Protocol - Decentralized gifting system with AI-generated NFT art",
   "type": "module",
   "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
     "compile": "hardhat compile",
     "test": "hardhat test --network hardhat",
     "deploy": "node scripts/deploy-simple.js",
-    "deploy:amoy": "node scripts/deploy-simple.js",
-    "frontend:dev": "cd frontend && npm run dev",
-    "frontend:build": "cd frontend && npm run build",
-    "verify-setup": "node scripts/verify-setup.js"
+    "deploy:amoy": "node scripts/deploy-simple.js"
   },
   "keywords": [
     "nft",
