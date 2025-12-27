@@ -1,22 +1,25 @@
 {
   "name": "nft-gift-protocol",
   "version": "1.0.0",
-  "description": "NFT Gift Protocol - Decentralized gifting system with AI-generated NFT art",
+  "description": "NFT Gift Protocol - Base Miniapp for decentralized gifting with AI-generated NFT art",
   "type": "module",
   "scripts": {
     "dev": "cd frontend && npm run dev",
     "build": "cd frontend && npm run build",
     "compile": "hardhat compile",
     "test": "hardhat test --network hardhat",
-    "deploy": "node scripts/deploy-simple.js",
+    "deploy": "node scripts/deploy-base.js",
+    "deploy:base-sepolia": "node scripts/deploy-base.js",
+    "deploy:base": "node scripts/deploy-base.js --mainnet",
     "deploy:amoy": "node scripts/deploy-simple.js"
   },
   "keywords": [
     "nft",
     "gift",
     "web3",
-    "ethereum",
-    "polygon"
+    "base",
+    "miniapp",
+    "onchainkit"
   ],
   "author": "",
   "license": "MIT",
