@@ -170,3 +170,7 @@ frontend/.env.local
 *jwt*
 *.pem
 *.key
+
+# Kiro and VSCode
+.kiro/
+.vscode/
